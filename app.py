@@ -3,6 +3,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.support import ui
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import tkinter
 from tkinter import messagebox
 
@@ -25,8 +26,11 @@ def page_is_loaded(driver):
 
 
 # ブラウザのドライバを読み込む。
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(service_log_path=os.path.devnull,
-                          executable_path='chromedriver.exe')
+                          executable_path='chromedriver.exe',
+                          options=chrome_options)
 # 対象ページを読み込ませる。まずはログインページ。
 driver.get("https://eliteattendance.cvi.co.jp/#bsctrl")
 wait = ui.WebDriverWait(driver, 10)
