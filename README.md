@@ -7,4 +7,4 @@ Automate attendancepro elite login and start/end work.
 - Tested with python 3.7 on windows10
 
 # Usage
-python app.py <username> <password> <company-code> <start|end>
+python app.py [username] [password] [company-code] [start|end]

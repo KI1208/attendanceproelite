@@ -16,7 +16,6 @@ action = sys.argv[4]
 USERNAME_XPATH = '//*[@id="txtUserID"]'
 PASSWORD_XPATH = '//*[@id="txtPassword"]'
 COMPANY_XPATH = '//*[@id="txtCompanyCode"]'
-
 START_XPATH = '//*[@id="ctl00_ContentMain_btnWebStartTime"]'
 STARTTIME_XPATH = '//*[@id="ctl00_ContentMain_txtStartTime"]'
 END_XPATH = '//*[@id="ctl00_ContentMain_btnWebEndTime"]'
@@ -52,10 +51,6 @@ password_field.send_keys(Keys.RETURN)
 wait = ui.WebDriverWait(driver, 10)
 wait.until(page_is_loaded)
 
-# For Test
-# March7 = '//*[@id="ctl00_ContentMain_Calendar1"]/tbody/tr[4]/td[7]/a'
-# driver.find_element_by_xpath(March7).click()
-
 # 同様に、入力したい箇所のIDを指定して、入力を与える。
 # ここではsubmit要素の状態(enabled/disabled)で場合分けしている。
 # またMessageBoxでどちらの分岐になったか、わかるようにしている。
@@ -86,3 +81,12 @@ elif action == 'end':
         messagebox.showinfo("No action done", """You already ended this day.
         How was it?""")
 
+driver.close()
+try:
+    if action == 'start':
+        os.system('taskkill /fi "WindowTitle eq attendancepro_start"')
+    else:
+        os.system('taskkill /fi "WindowTitle eq attendancepro_end"')
+    sys.exit()
+except:
+    messagebox.showwarning("Warning", "You might run from python, or something is wrong with closing window.")
