@@ -1,10 +1,10 @@
 # attendanceproelite
-Automate attendancepro elite login and start/end work.
+Automate attendance login(SSO) and start/end work.
 
 # Prerequisite
 - Need Chrome is installed
 - Need selenium chrome driver on the same path of app.py
-- Tested with python 3.7 on windows10
+- Tested with python 3.11 on windows11
 
 # Usage
-python app.py [username] [password] [company-code] [start|end]
+python app.py [start|end]
